@@ -3,7 +3,7 @@ $is_auth = rand(0, 1);
 
 $user_name = 'Olya'; // укажите здесь ваше имя
 
-$category = array('Доски и лыжи','Ботинки','Одежда','Инструменты','Разное');
+$category = array("boards" =>'Доски и лыжи',"boots" =>'Ботинки',"clothing" =>'Одежда',"tools" =>'Инструменты',"other" =>'Разное');
 $goods = array(array("name" => "2014 Rossignol District Snowboard", "category" => "Доски и лыжи" , "cost" => 10999, "URL" => "img/lot-1.jpg"),
     array("name" => "DC Ply Mens 2016/2017 Snowboard", "category" => "Доски и лыжи" , "cost" => 159999, "URL" => "img/lot-2.jpg"),
     array("name" => "Крепления Union Contact Pro 2015 года размер L/XL", "category" => "Крепления" , "cost" => 8000, "URL" => "img/lot-3.jpg"),
@@ -66,9 +66,16 @@ $goods = array(array("name" => "2014 Rossignol District Snowboard", "category" =
         <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
         <ul class="promo__list">
             <!--заполните этот список из массива категорий-->
-            <li class="promo__item promo__item--boards">
-                <a class="promo__link" href="pages/all-lots.html">Имя категории</a>
+            <?
+            while ($cat = current($category)) {
+            ?>
+            <li class="promo__item promo__item--<?=key($category) ?>">
+                <a class="promo__link" href="pages/all-lots.html"><?=$cat?></a>
             </li>
+            <?
+                next($category);
+            }
+            ?>
         </ul>
     </section>
     <section class="lots">
@@ -90,8 +97,8 @@ $goods = array(array("name" => "2014 Rossignol District Snowboard", "category" =
                     <h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?=$good["name"] ?></a></h3>
                     <div class="lot__state">
                         <div class="lot__rate">
-                            <span class="lot__amount"><?=$good["cost"] ?></span>
-                            <span class="lot__cost">цена<b class="rub">р</b></span>
+                            <span class="lot__amount">Цена</span>
+                            <span class="lot__cost"><?=$good["cost"] ?><b class="rub">р</b></span>
                         </div>
                         <div class="lot__timer timer">
                             12:23
