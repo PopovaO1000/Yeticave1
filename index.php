@@ -10,6 +10,23 @@ $goods = array(array("name" => "2014 Rossignol District Snowboard", "category" =
     array("name" => "Ботинки для сноуборда DC Mutiny Charocal", "category" => "Ботинки" , "cost" => 10999, "URL" => "img/lot-4.jpg"),
     array("name" => "Куртка для сноуборда DC Mutiny Charocal", "category" => "Одежда" , "cost" => 7500, "URL" => "img/lot-5.jpg"),
     array("name" => "Маска Oakley Canopy", "category" => "Разное" , "cost" => 5400, "URL" => "img/lot-6.jpg"));
+
+function num_format($cost)
+{
+    $cost = ceil($cost);
+    if($cost>1000)
+        $cost = number_format($cost,0,""," ");
+    $cost .= '<b class="rub">р</b>';
+    return $cost;
+}
+
+function time_form()
+{
+    $time2 =  strtotime('2022-05-12 24:00');
+    $time1 = time();
+    $diff = $time2 - $time1;
+    return gmdate('H:i', $diff);
+}
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -98,10 +115,10 @@ $goods = array(array("name" => "2014 Rossignol District Snowboard", "category" =
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Цена</span>
-                            <span class="lot__cost"><?=$good["cost"] ?><b class="rub">р</b></span>
+                            <span class="lot__cost"><?=num_format($good["cost"])?></span>
                         </div>
                         <div class="lot__timer timer">
-                            12:23
+                            <?=time_form()?>
                         </div>
                     </div>
                 </div>
