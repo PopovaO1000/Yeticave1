@@ -1,12 +1,17 @@
 <?php
 require_once('functions.php');
 require_once('conn.php');
+$id=$_GET['id'];
+foreach ($goods as $good)
+    if($good['id_lot']==$id){
+        $lot=$good;
+        break;
+    }
 
 
-
-$page_content = include_template('index.php',  [
+$page_content = include_template('template_lot.php',  [
     'category' => $category,
-    'goods' => $goods
+    'lot' => $lot
 ]);
 $layout_content = include_template('layout.php', [
     'content' => $page_content,
@@ -19,4 +24,3 @@ $layout_content = include_template('layout.php', [
 print($layout_content);
 
 ?>
-
