@@ -25,7 +25,7 @@
                 <div class="lot-item__right">
                     <div class="lot-item__state">
                         <div class="lot-item__timer timer">
-                            10:54
+                            <?=time_form()?>
                         </div>
                         <div class="lot-item__cost-state">
                             <div class="lot-item__rate">
