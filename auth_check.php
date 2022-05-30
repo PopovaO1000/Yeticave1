@@ -45,7 +45,7 @@ else{
     $sql = "SELECT * FROM user WHERE email = '$form_items[0]'";
     $result = mysqli_query($link, $sql);
     if($user = $result->fetch_assoc()){
-        if($user['password'] == $form_items[1]){
+        if(password_verify($form_items[1],$user['password'])){
             setcookie('user',$user['login'],time()+3600,'/');
             header('Location: ../index.php');
         }
